@@ -1,0 +1,103 @@
+{
+    
+    "BottomToolbar": {
+        "Mailbox": "Brievenbus",
+        "Favorites": "Favorieten",
+        "Search": "Zoeken",
+        "Photos": "Foto's",
+        "Location": "Plaats"
+        
+        
+    },
+    "Common": {
+        "btnBack": "Terug",
+        "Member": "Lid",
+        "Subject": "Onderwerp",
+        "Date": "Datum",
+        "Search": "Zoeken"
+        
+        
+    },
+    "index": {
+        "lblId": "Lid:",
+        "lblPassword": "Wachtwoord:",
+        "btnlogin": "Login",
+        "btnlogout": "Afmelden"
+    },
+    
+    "attr": {
+        "placeholderMember": "Enter Member Id",
+        "placeholderPassword":  "Enter Password",
+        "placeholderSearch": "Search...",
+        "placeholderComments": "Comments.."
+    },
+    
+    "mailbox": {
+        "btnComoseMessage": "Compose",
+        "liHeading": "Mail folders",
+        "Mailbox": "Mailbox"
+    },
+    "mailboxList": {
+        "Inbox": "Inbox",
+        "Sent": "Sent",
+        "Archive": "Archie"
+    },
+    
+    "Compose": {
+        "Compose": "Compose",
+        "lblTo": "To:",
+        "lblSubject": "Subject:",
+        "lblBody": "Body:",
+        "btnSend": "Send"
+    },
+    
+    "Profile": {
+        "Profile": "Profile",
+        "Orientation": "Orientation:",
+        "Country": "Country:",
+        "Province": "Province:",
+        "Region": "Region",
+        "Age": "Age"
+    },
+    
+    "AlbumsCategory": {
+        "Photos": "Photos",
+        "Album Categories": "Album Categories"
+    },
+    
+    "PhotoView": {
+        "btnAddPhoto": "Add" ,
+        "PhotoView": "Photo View"
+    },
+    
+    "PhotoAdd": {
+        "PhotoAdd": "Add photo" ,
+        "btnSelectImage": "Select Image" ,
+        "btnSave": "Save and upload",
+        "lblShowinpublic": "Show in public",
+        "optYes": "Yes",
+        "optNo": "No"
+    },
+    
+    "messages":
+    {
+        "success": "",
+        "PhotoAddSaveWithoutValidationError": "Unable to save image without selecting",
+        "SearchEmptyKeywordValidation": "Search keyword  required.",
+        "MailboxEmptyToFieldValidation": "Please fill in To: field",
+        "MailboxEmptySubjectFieldValidation": "Please fill Subject: field",
+        "MailboxEmptyBodyFieldValidation": "Please fill Body: field",
+        
+        "Title": {
+            "Success": "Success",
+            "Warning": "Warning",
+            "Error": "Error",
+            "Information": "Information"
+        },
+        
+        "buttonOk": "Ok"
+    }
+}
+
+
+

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,   width=device-width, height=device-height" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="css/jalf_theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/i18next.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile.min.js"></script>
+    <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/))
+        document.write('<script charset="utf-8" src="cordova.android.js"><\/script>');
+        else //if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/))
+        document.write('<script charset="utf-8" src="cordova.js"><\/script>');
+        </script>
+</head>
+
+<body>
+    <div id="messageboxPage" data-role="page" data-theme="a">
+        <div data-role="header" data-theme="a">
+            <div class="center-wrapper">
+                <img src="img/ban_messagerie.png" class="headerimg" />
+            </div>
+        </div>
+
+        <div id="messagePage" data-role="content" data-theme="a">
+            <style>
+            #mail_read {
+                background-color:#fff;
+                padding: 5px;
+                border-radius: 4px 4px;
+                margin: 20px 0px 60px 0px;
+            }
+            .upperdiv {
+                background-color:#323232;
+                padding: 10px 0px 20px 0px;
+                border-radius:4px 4px;
+            }
+            .lowerdiv {
+                overflow-x: scroll;
+                padding: 5px 0px;
+                height:100%;
+            }
+            .btnBackmsg {
+                color:#323232;
+                background: #f4f6f6;
+                background: -moz-linear-gradient(top, #f4f6f6 0%, #e5e6e7 29%, #c6c7c8 74%, #bbbdbd 93%, #bebfc0 98%, #c3c4c5 100%);
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f6f6), color-stop(29%, #e5e6e7), color-stop(74%, #c6c7c8), color-stop(93%, #bbbdbd), color-stop(98%, #bebfc0), color-stop(100%, #c3c4c5));
+                background: -webkit-linear-gradient(top, #f4f6f6 0%, #e5e6e7 29%, #c6c7c8 74%, #bbbdbd 93%, #bebfc0 98%, #c3c4c5 100%);
+                background: -o-linear-gradient(top, #f4f6f6 0%, #e5e6e7 29%, #c6c7c8 74%, #bbbdbd 93%, #bebfc0 98%, #c3c4c5 100%);
+                background: -ms-linear-gradient(top, #f4f6f6 0%, #e5e6e7 29%, #c6c7c8 74%, #bbbdbd 93%, #bebfc0 98%, #c3c4c5 100%);
+                background: linear-gradient(to bottom, #f4f6f6 0%, #e5e6e7 29%, #c6c7c8 74%, #bbbdbd 93%, #bebfc0 98%, #c3c4c5 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f6f6', endColorstr='#c3c4c5', GradientType=0);
+                min-width:12%;
+                border: 1px solid #999;
+            }
+            .btnBackmsg:active {
+                color:#981616;
+                -moz-box-shadow: inset 0 0 3px #981616
+                /*{global-active-background-color}*/
+                , 0 0 9px #981616;
+                -webkit-box-shadow: inset 0 0 3px #981616, 0 0 9px #981616;
+                box-shadow: inset 0 0 3px #981616, 0 0 9px #981616;
+            }
+            .TextBoxAsLabel {
+                color: #323232;
+                border: none;
+                background-color: #fff;
+                background: transparent;
+                padding: 5px;
+            }
+            textarea {
+                resize:vertical;
+                height: calc(100% - 55px) !important;
+            }
+            #txtBody {
+                -moz-appearance: textfield;
+                -webkit-appearance: textfield;
+                background-color: #f1f3f3;
+                background-color: -moz-field;
+                border: 1px solid darkgray;
+                box-shadow: 1px 1px 1px 0 lightgray inset;
+                height: 300px;
+                border-radius: 4px 4px;
+                color: #323232;
+                word-wrap: break-word;
+                text-align: left;
+                padding: 5px 10px;
+            }
+            .block {
+                padding-left: 15px;
+            }
+            div.horizontalRule {
+                clear: both;
+                width: 100%;
+                background-color: #D1D1D1;
+                height: 1px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            .barContainer {
+                width: 65%;
+                margin: 0px auto;
+                position: fixed;
+                bottom: 52px;
+                padding-bottom: 0px;
+            }
+            .ui-bar {
+                padding: 5px 5px;
+                font-size: 10px;
+                border-radius: 4px 4px;
+            }
+            .selected {
+                color:#f1f3f3;
+                background: #e13e3e;
+                /* Old browsers */
+                background: -moz-linear-gradient(top, #e13e3e 0%, #d92f2f 23%, #d22c2c 40%, #c72929 46%, #a51414 57%, #980d0d 63%, #970c0c 80%, #971010 100%);
+                /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e13e3e), color-stop(23%, #d92f2f), color-stop(40%, #d22c2c), color-stop(46%, #c72929), color-stop(57%, #a51414), color-stop(63%, #980d0d), color-stop(80%, #970c0c), color-stop(100%, #971010));
+                /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top, #e13e3e 0%, #d92f2f 23%, #d22c2c 40%, #c72929 46%, #a51414 57%, #980d0d 63%, #970c0c 80%, #971010 100%);
+                /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(top, #e13e3e 0%, #d92f2f 23%, #d22c2c 40%, #c72929 46%, #a51414 57%, #980d0d 63%, #970c0c 80%, #971010 100%);
+                /* Opera 11.10+ */
+                background: -ms-linear-gradient(top, #e13e3e 0%, #d92f2f 23%, #d22c2c 40%, #c72929 46%, #a51414 57%, #980d0d 63%, #970c0c 80%, #971010 100%);
+                /* IE10+ */
+                background: linear-gradient(to bottom, #e13e3e 0%, #d92f2f 23%, #d22c2c 40%, #c72929 46%, #a51414 57%, #980d0d 63%, #970c0c 80%, #971010 100%);
+                /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e13e3e', endColorstr='#971010', GradientType=0);
+                /* IE6-8 */
+            }
+            </style>
+            <script type="text/javascript" src="js/index.js"></script>
+            <script type="text/javascript" src="js/main.js"></script>
+            <script type="text/javascript" src="js/mailboxList.js"></script>
+            <script>
+            $(document).bind("pagebeforecreate", function() {
+                $.i18n.init(opts).done(function() {
+                    try {
+                        $('#btnBackmsg .ui-btn-text').text($.t('Common.btnBack'));
+                        $('#btnReply .ui-btn-text').text($.t('Common.btnReply'));
+                        var json_data = $.parseJSON(sessionStorage.getItem('json_Messagebox'));
+                        if (sessionStorage.getItem('message_type') == "0") {
+                            $('lblTo').text($.t('Messagebox.lblFrom'));
+                            $('#txtTo').html(json_data.from_username);
+                        } else if (sessionStorage.getItem('message_type') == "1") {
+                            $('lblTo').text($.t('Messagebox.lblTo'));
+                            $('#txtTo').html(json_data.to_username);
+                        } else if (sessionStorage.getItem('message_type') == "2") {
+                            $('lblTo').text($.t('Messagebox.lblFrom'));
+                            $('#txtTo').html(json_data.from_username);
+                        }
+
+                        if (sessionStorage.getItem('message_type') == "0") {
+                            $('#lblTo').text($.t('Messagebox.lblFrom'));
+                        } else if (sessionStorage.getItem('message_type') == "1") {
+                            $('#lblTo').text($.t('Messagebox.lblTo'));
+                        } else if (sessionStorage.getItem('message_type') == "2") {
+                            $('#lblTo').text($.t('Messagebox.lblFrom'));
+                        }
+
+                        $('#lblDate').text($.t('Messagebox.lblDate'));
+                        $('#lblSubject').text($.t('Messagebox.lblSubject'));
+                        $('#aNo > span > span').text($.t('Messagebox.aNo'));
+                        $('#aAccept  > span > span').text($.t('Messagebox.aAccept'));
+                        $('#aReply  > span > span').text($.t('Messagebox.aReply'));
+
+                        $("#amailbox span.ui-btn-text").text($.t('BottomToolbar.amailbox'));
+                        $("#afavorites span.ui-btn-text").text($.t('BottomToolbar.afavorites'));
+                        $("#asearch span.ui-btn-text").text($.t('BottomToolbar.asearch'));
+                        $("#aphotos span.ui-btn-text").text($.t('BottomToolbar.aphotos'));
+                        $("#alocalization span.ui-btn-text").text($.t('BottomToolbar.alocalization'));
+                    } catch (e) {
+                        alert('i18n: ' + e);
+                    }
+                });
+            });
+            $(document).bind("pageshow", function() {
+                try {
+                    FillData();
+                } catch (e) {
+                    alert(e);
+                }
+            });
+            $(document).ready(function() {
+                console.log('messagebox document ready');
+
+                FillData();
+                $(document).on('click', '#btnBackmsg', function() {
+                    GotoLink("mailboxList.html");
+                });
+            });
+
+            function SetActive(me) {
+                try {
+                    $('#aNo').removeClass('ui-btn-active');
+                    $('#aAccept').removeClass('ui-btn-active');
+                    $('#aReply').removeClass('ui-btn-active');
+                    //Add the selected class to the current link
+                    $('#' + me).addClass('ui-btn-active');
+                    if (me == "aNo") {
+                        console.log('no');
+                    } else if (me == "aAccept") {
+                        console.log('accetp');
+                    } else if (me == "aReply") {
+                        console.log('reply');
+                    }
+                } catch (e) {
+                    alert('SetActive: ' + e);
+                }
+            }
+
+            function FillData() {
+                try {
+                    var json_data = $.parseJSON(sessionStorage.getItem('json_Messagebox'));
+                    if (json_data) {
+                        $('#txtTo').html('');
+                        $('#txtDate').html('');
+                        $('#txtsubject').html('');
+                        $('#txtBody').html('');
+                        console.log('json_data=' + JSON.stringify(json_data));
+
+                        console.log('message_type' + sessionStorage.getItem('message_type'));
+
+                        $('#txtDate').html(json_data.datetime_sent);
+                        $('#txtsubject').html(json_data.subject);
+                        $('#txtBody').html($.parseHTML(json_data.body));
+                    }  
+                } catch (e) {
+                    alert('FillData ' + e);
+                }
+            }
+
+            function Supprimer() {
+                try {
+
+                    var urlDel = sessionStorage.getItem('msg_link');
+                    console.log('urlDel=' + urlDel);
+                    showConfirmDelete(urlDel, sessionStorage.getItem('message_type'));
+
+                } catch (e) {
+                    alert(e);
+                }
+            }
+
+            function showConfirmDelete(msgUrl, indx) {
+
+                try {
+                    console.log('msgUrl=' + msgUrl);
+                    console.log('indx=' + indx);
+
+                    var buttonIndex = confirm("Are you sure you want to delete message?");
+                    if (buttonIndex == true) {
+                        deleteMessage(msgUrl, indx);
+                        GotoLink('mailboxList.html');
+                    }
+                } catch (e) {
+                    alert(e);
+                }
+            }
+            </script>
+            <div class="ui-bar ui-bar-b ui-corner-all  bar" data-theme="a">
+                <div class="ui-btn-left">
+                    <a id="btnBackmsg" rel="external" href="javascript:void(0);" data-role="button" class="btn-bar btnBackMessage" data-inline="true" data-theme="a">Retour</a> 
+                </div>
+                <div class="ui-btn-right">
+                    <!--  <a data-role="button" rel="external" href="messagebox.html" class="imgRefresh" data-mini="true" data-inline="true" style="width:45px;height:45px;" data-theme="a"></a> -->
+                    <a data-role="button" rel="external" href="javascript:void(0);" onclick="FillData();" class="imgRefresh" data-mini="true" data-inline="true" style="width:45px;height:45px;" data-theme="a"></a>
+                </div>
+            </div>
+            <div id="mail_read">
+                <div class="upperdiv">
+                    <div class="block ui-field-contain">
+                        <label id="lblTo" for="txtTo">
+                            To:
+                        </label>
+                        <label id="txtTo" class="txtTo"></label>
+                        <!--   <input name="txtTo" class="inpt" id="txtTo" placeholder="" value="" type="label"  data-theme="a"> -->
+                    </div>
+                    <div class="horizontalRule"></div>
+                    <div class="block ui-field-contain">
+                        <label id="lblDate" for="txtDate">
+                            Date:
+                        </label>
+                        <label id="txtDate" class="txtDate"></label>
+                        <!--   <input name="txtTo" class="inpt" id="txtTo" placeholder="" value="" type="label"  data-theme="a"> -->
+                    </div>
+                    <div class="horizontalRule"></div>
+                    <div class="block ui-field-contain">
+                        <label id="lblSubject" for="txtsubject">
+                            Subject:
+                        </label>
+                        <label id="txtsubject" class="txtsubject"></label>
+                    </div>
+                </div>
+                <div class="lowerdiv">
+                    <!--   <label id="lblBody" for="txtBody" class="ui-hidden-accessible">
+                    </label> -->
+
+                    <div id="txtBody" class="txtBody"></div>
+                </div>
+                <!-- lowerdiv -->
+            </div>
+            <!-- mail_read -->
+        </div>
+        <div class="barContainer" id="barContainer">
+            <div class="ui-bar ui-bar-b  ui-btn-corner-all" style=" margin-top: 40px; padding-left: 0px;padding-right:10px; ">
+                <div style="float: left;  width: 30%;">
+                    <a data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" id="aNo" onclick="SetActive('aNo')" class="LnkButton ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-up-a" data-theme="a" data-role="button" data-inline="true" data-mini="true">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Cancel</span>
+                        </span>
+                    </a>
+                </div>
+                <div style="float: left;   width: 30%;padding-left: 6%; padding-right: 2%;">
+                    <a data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" id="aAccept" onclick="Supprimer();" data-theme="a" class="LnkButton ui-btn ui-btn-up-a ui-shadow ui-btn-corner-all ui-mini ui-btn-inline" data-role="button" data-inline="true" data-mini="true">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Delete</span>
+                        </span>
+                    </a>
+                </div>
+                <div style="float: right; width: 30%;">
+                    <a data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" id="aReply" onclick="Reply();" data-theme="a" class="LnkButton ui-btn ui-btn-up-a ui-shadow ui-btn-corner-all ui-mini ui-btn-inline" data-role="button" data-inline="true" data-mini="true">
+                        <span class="ui-btn-inner">
+                            <span class="ui-btn-text">Reply</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div style="padding-bottom: 90px;"></div>
+
+        <div data-role="footer" data-id="mainFooter" data-position="fixed" class="ui-footer ui-bar-a ui-footer-fixed slideup" role="contentinfo">
+            <div data-role="navbar" data-grid="d" class="ui-navbar ui-mini" role="navigation">
+                <ul class="apple-navbar-ui comboSprite ui-grid-d">
+                    <li class="ui-block-a">
+                        <a href="mailbox.html" rel="external"  id="amailbox" class="ui-btn-active ui-btn ui-btn-up-a ui-btn-inline ui-btn-icon-top" data-iconpos="top" data-icon="features" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true">
+                            <span class="ui-btn-inner">
+                                <span class="ui-btn-text">Message</span>
+                                <span class="ui-icon ui-icon-features ui-icon-shadow">&nbsp;</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="ui-block-b">
+                        <a href="favorites.html" rel="external"  id="afavorites" data-iconpos="top" data-icon="brands" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true" class="ui-btn ui-btn-up-a ui-btn-inline ui-btn-icon-top">
+                            <span class="ui-btn-inner">
+                                <span class="ui-btn-text">Favourite</span>
+                                <span class="ui-icon ui-icon-brands ui-icon-shadow">&nbsp;</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="ui-block-c">
+                        <a href="search.html"  rel="external" id="asearch" data-iconpos="top" data-icon="fees" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true" class="ui-btn ui-btn-up-a ui-btn-inline ui-btn-icon-top">
+                            <span class="ui-btn-inner">
+                                <span class="ui-btn-text">Search</span>
+                                <span class="ui-icon ui-icon-fees ui-icon-shadow">&nbsp;</span>
+                            </span>
+                        </a>
+                    </li>
+                   <!--  <li class="ui-block-d">
+                        <a href="AlbumCategory.html" rel="external"  id="aphotos" data-iconpos="top" data-icon="contact" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true" class="ui-btn ui-btn-up-a ui-btn-inline ui-btn-icon-top">
+                            <span class="ui-btn-inner">
+                                <span class="ui-btn-text">Photos</span>
+                                <span class="ui-icon ui-icon-contact ui-icon-shadow">&nbsp;</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="ui-block-e">
+                        <a href="#" data-iconpos="top" rel="external"  id="alocalization" data-icon="about" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true" class="ui-btn ui-btn-up-a ui-btn-inline ui-btn-icon-top">
+                            <span class="ui-btn-inner">
+                                <span class="ui-btn-text">Localization</span>
+                                <span class="ui-icon ui-icon-about ui-icon-shadow">&nbsp;</span>
+                            </span>
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+        <!-- footer -->
+        <link rel="stylesheet" type="text/css" href="css/bartender.css" />
+        <!-- footer -->
+    </div>
+    <!-- page --> 
+</body>
+
+</html>

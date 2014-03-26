@@ -1,0 +1,204 @@
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+<meta charset="utf-8"/>
+
+<link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="js/jquery.min.js" ></script>
+<script type="text/javascript" src="js/jquery.mobile.min.js"></script>
+<link rel="stylesheet" href="css/jalf_theme.min.css" />
+<link rel="stylesheet" href="css/jquery.mobile.structure.min.css" /> 
+<script type="text/javascript" src="cordova.js"></script>
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+
+</head>
+<body>
+<div data-role="page" data-theme="a">
+
+<div data-role="header" data-position="fixed" data-tap-toggle="false">
+<h1>MailBox</h1>
+</div>
+<div   data-role="content" data-theme="a">
+
+<script type="text/javascript">
+var map, mapOptions, currentLocation, currentLocationMarker;
+function loadMapScript() {
+var script = document.createElement("script");
+script.type = "text/javascript";
+script.id = "googleMaps"
+script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDLF_ybu7cbNaWfMzhUSIWIOrTBGjXl3iw&callback=initializeMap";
+document.body.appendChild(script);
+}
+
+function initializeMap(mapOptions) {
+var myLatlng = new google.maps.LatLng(currentLocation.coords.latitude, currentLocation.coords.longitude);
+var mapOptions = {
+center : myLatlng,
+zoom : 18,
+mapTypeId : google.maps.MapTypeId.ROADMAP
+};
+map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+updateCurrentLocationMarker();
+}
+
+function updateCurrentLocationMarker() {
+var myLatlng = new google.maps.LatLng(currentLocation.coords.latitude, currentLocation.coords.longitude);
+
+if (currentLocationMarker) {
+currentLocationMarker.setMap(null);
+} else {
+currentLocationMarker = new google.maps.Marker({
+position : myLatlng,
+animation : google.maps.Animation.DROP,
+title : "You!",
+map : map
+});
+}
+}
+
+function onSuccess(position) {
+currentLocation = position;
+if (!map) {
+loadMapScript();
+}
+}
+
+function onError(error) {
+alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+}
+
+function onDeviceReady() {
+navigator.geolocation.getCurrentPosition(onSuccess, onError);
+}
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+</script>
+<div id="map_canvas">
+Couldn't load map because there was no internet connection available
+</div>
+
+</div> 
+<div data-theme="a" data-role="footer" data-position="fixed">
+<div data-role="navbar" >  
+<ul>  
+<li><a id="amailbox" href="mailbox.html"   data-icon="jalf-email"  > MailBox </a></li>
+<li><a id="afavorites" href="favorites.html" data-icon="jalf-favorites"> Favorites </a></li>  
+<li><a id="asearch" href="search.html" data-icon="jalf-search"> Search </a></li> 
+<li><a id="aphotos" href="AlbumCategory.html" data-icon="jalf-photos"> Photos </a></li> 
+<li><a id="alocation" href="location.html" data-icon="jalf-location"> Location </a></li> 
+</ul>  
+</div> 
+</div>
+</div>
+</body>
+</html>
+-->
+
+
+<!--this is second example not working but only in browser-->
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" /> 
+        <link rel="stylesheet" href="css/jalf_theme.min.css" />
+        <link rel="stylesheet" href="css/jquery.mobile.structure.min.css" /> 
+         <link rel="stylesheet" type="text/css" href="css/bartender.css" /> 
+        <link rel="stylesheet" href="css/index.css" />
+        <script type="text/javascript" src="js/jquery.min.js" ></script>
+        <script type="text/javascript" src="js/i18next.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/jquery.mobile.min.js"></script> 
+        <script type="text/javascript">
+            if (navigator.userAgent.toLowerCase().match(/android/))
+                document.write('<script charset="utf-8" src="cordova.android.js"><\/script>');
+            else //if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/))
+                document.write('<script charset="utf-8" src="cordova.js"><\/script>');
+        </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="a" data-add-back-btn="false">
+            
+            <div data-role="header">
+                <h1>Location</h1>
+            </div>
+            <div data-role="content">
+                <script type="text/javascript" src="js/main.js"></script>
+                <script type="text/javascript" src="js/location.js"></script>
+                <!--
+<script type="text/javascript"   src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.ui.map.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.ui.map.extensions.js"></script> 
+-->
+                
+                
+                <style type="text/css">
+                    html { height: 100%; }
+                    body { height: 100%; margin: 0; padding: 0; }
+                    #map-canvas { height: 100%; }
+                </style>
+                <script>
+                    $(document).bind("pagebeforecreate", function(){
+                        $.i18n.init(opts).done(function() {
+                            
+                            $('h1').text($.t('Location.Location'));
+                            // $('#lblBody ').text($.t('index.btnlogin'));
+                            $("#afavorites span.ui-btn-text").text($.t('BottomToolbar.afavorites'));
+                            $("#asearch span.ui-btn-text").text($.t('BottomToolbar.asearch'));
+                            $("#aphotos span.ui-btn-text").text($.t('BottomToolbar.aphotos'));
+                            $("#alocation span.ui-btn-text").text($.t('BottomToolbar.alocation'));
+                            
+                        });
+                    }); 
+                    document.addEventListener("deviceready", function() {   
+                        
+                    });
+                    
+                </script>
+                <!--
+<script type="text/javascript">
+var  initialize= function () {
+try{
+var mapOptions = {
+center: new google.maps.LatLng(-34.397, 150.644),
+zoom: 8
+};
+
+var map = new google.maps.Map(document.getElementById("map_canvas"),
+mapOptions);
+
+}
+catch(e)
+{
+alert(e);
+}
+};
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+-->
+                <div id="map_canvas" style="width:100%;height:250px"></div>
+            </div>
+             <div data-role="footer" data-id="mainFooter" data-position="fixed">
+                <div data-role="navbar" data-grid="d">
+                    <ul class="apple-navbar-ui comboSprite">
+                        <li><a rel="external" href="mailbox.html"   id="amailbox" data-iconpos="top" data-icon="features">Mailbox</a></li>
+                        <li><a rel="external" href="favorites.html" id="afavorites" data-iconpos="top" data-icon="brands">Favorites</a></li>
+                        <li><a rel="external" href="search.html" id="asearch" data-iconpos="top" data-icon="fees">Search</a></li>
+                        <li><a rel="external" href="AlbumCategory.html" id="aphotos" data-iconpos="top" data-icon="contact">Photos</a></li>
+                        <li><a rel="external"   class="ui-btn-active" href="#" id="alocation"  data-iconpos="top" data-icon="about">Location</a></li>
+                    </ul>
+                </div>
+            </div >
+        </div>
+    </body>
+</html>
+
+<!--this is third example-->
+

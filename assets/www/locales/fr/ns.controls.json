@@ -1,0 +1,135 @@
+{
+    
+    "BottomToolbar": {
+        "amailbox": "Message",
+        "afavorites": "Favoris",
+        "asearch": "Recherche",
+        "aphotos": "Photos",
+        "alocalization": "Localisation"
+    },
+    "Common": {
+        "btnBack": "Retour",
+        "Member": "Membre",
+        "Subject": "Sujet",
+        "Date": "Date",
+        "Search": "Recherche",
+        "btnReply": "Repondre",
+        "Message": "Message"
+        
+    },
+    "index": {
+        "lblId": "Nom d'utilisateur:",
+        "lblPassword": "Mot de passe:",
+        "btnlogin": "Entrer",
+        "btnlogout": "Deconnexion", 
+        "Heading": ""
+    },
+    
+    "attr": {
+        "placeholderMember": "Entrez Id de connexion",
+        "placeholderPassword": "Entrez Mot de passe",
+        "placeholderSearch": "Recherche...",
+        "placeholderComments": "Commentaires.."
+    },
+    
+    "mailbox": {
+        "Inbox": "Boîte de reception",
+        "Sent":"Messages envoyes",
+        "Archive": "Archives",
+        "btnComposeMessage":"Nouveau message",
+        "liHeading": "Dossiers de courrier",
+        "Mailbox": "boîte aux lettres"
+    },
+    "mailboxList": { 
+        "aModify":"Modifier", 
+        "Heading": "Email Liste"
+    },
+    "mailboxListMod": {  
+        "aModCancel":"Annuler",
+        "aModDelete":"Supprimer",
+        "aModArchive":"Archiver"
+         
+    },
+    "Compose": { 
+        "lblTo": "De:", 
+        "lblSubject": "Sujet:",
+        "lblBody": "Body:",
+        "btnSend": "Composer",
+        "btnReply":"Envoyer",
+        "btnCancel":"Annuler",
+        "Heading": ""
+    },
+    "Messagebox": {        
+        "lblTo": "De:",
+        "lblFrom": "De:",
+        "lblDate": "Date",
+        "lblSubject": "Sujet:",
+        "lblBody": "Body:",
+        "btnSend": "Expedier",
+        "aNo": "Non Merci!",
+        "aAccept": "Supprimer",
+        "aReply": "Repondre",
+        "Heading": ""
+    },
+    
+    "Profile": {
+        "Profile": "Profil",
+        "Orientation": "Orientation",
+        "Country": "Pays",
+        "Province": "Province",
+        "Region": "Region",
+        "Age": "âge",
+        "Heading": ""
+    },
+    
+    "AlbumsCategory": {
+        "Photos": "Photos",
+        "Album Categories": "Categories Album",
+        "Heading": ""
+    },
+    
+    "PhotoView": {
+        "btnAddPhoto": "Ajouter" ,
+        "PhotoView": "Galerie photo",
+        "Heading": ""
+    },
+    "PhotoAdd": {
+        "PhotoAdd": "Ajouter photo" ,
+        "btnSelectImage": "Selectionner l'image" ,
+        "btnSave": "Enregistrer et telecharger",
+        "lblShowinpublic": "Montrer en public",
+        "Heading": ""
+    } ,
+    
+    "Location": {
+        "Location":"Hire",
+        "Heading": ""
+    },
+    "Favorites": {
+        "Favorites":"Favoris",
+        "Heading": ""
+    },
+    
+    "messages":
+    {
+        "success": "",
+        "PhotoAddSaveWithoutValidationError": "Impossible d'enregistrer sans selectionner l'image",
+        "SearchEmptyKeywordValidation": "Recherche mot-clé necessaire.",
+        "MailboxEmptyToFieldValidation": "S'il vous plaît remplir champ A:",
+        "MailboxEmptySubjectFieldValidation": "S'il vous plaît remplir champ Objet:",
+        "MailboxEmptyBodyFieldValidation": "S'il vous plaît remplir le corps: champ",
+        "MemberLogoff": "Voulez-vous deconnecter?",
+        
+        "Title": {
+            "Success": "Reussite",
+            "Warning": "Avertissement",
+            "Error": "Erreur",
+            "Information": "Informations",
+            "LogoffConfirmation": "Confirmation de la fermeture de session"
+        },
+        
+        "buttonOk": "Bien",
+        "Yes": "Oui",
+        "No": "Aucun"
+    }
+}

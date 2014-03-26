@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,   width=device-width, height=device-height" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="css/jalf_theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure.css" /> 
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery.mobile.js"></script>
+    <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/))
+        document.write('<script charset="utf-8" src="cordova.android.js"><\/script>');
+        else //if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/))
+        document.write('<script charset="utf-8" src="cordova.js"><\/script>');
+        </script>
+    <title>Default</title>
+</head> 
+<body>
+    <div data-role="page" data-theme="a" data-add-back-btn="false">
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/Default.js"></script>
+        <style>
+        #dvContent {
+            background: #480007;
+            background: -moz-linear-gradient(top, #480007 0%, #8f0222 0%, #480007 32%, #000000 63%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #480007), color-stop(0%, #8f0222), color-stop(32%, #480007), color-stop(63%, #000000));
+            background: -webkit-linear-gradient(top, #480007 0%, #8f0222 0%, #480007 32%, #000000 63%);
+            background: -o-linear-gradient(top, #480007 0%, #8f0222 0%, #480007 32%, #000000 63%);
+            background: -ms-linear-gradient(top, #480007 0%, #8f0222 0%, #480007 32%, #000000 63%);
+            background: linear-gradient(to bottom, #480007 0%, #8f0222 0%, #480007 32%, #000000 63%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#480007', endColorstr='#000000', GradientType=0);
+            height:100%;
+        }
+        .bg {
+            background: #480007;
+            background: -moz-linear-gradient(top, #480007 0%, #8f0222 0%, #480007 42%, #480007 71%, #910002 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #480007), color-stop(0%, #8f0222), color-stop(42%, #480007), color-stop(71%, #480007), color-stop(100%, #910002));
+            background: -webkit-linear-gradient(top, #480007 0%, #8f0222 0%, #480007 42%, #480007 71%, #910002 100%);
+            background: -o-linear-gradient(top, #480007 0%, #8f0222 0%, #480007 42%, #480007 71%, #910002 100%);
+            background: -ms-linear-gradient(top, #480007 0%, #8f0222 0%, #480007 42%, #480007 71%, #910002 100%);
+            background: linear-gradient(to bottom, #480007 0%, #8f0222 0%, #480007 42%, #480007 71%, #910002 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#480007', endColorstr='#910002', GradientType=0);
+            height:100%;
+        }
+        .imgLogo {
+            width: 40%;
+            opacity: 0.8;
+        }
+        .dvSect {
+            margin-left: 10%;
+            margin-right: 5%;
+        }
+        .imgSect {
+            width: 90%;
+        }
+        .imgLink {
+            padding: 5px;
+            width: 95%;
+        }
+        .dvRecent {
+            height:25%;
+            width:100%;
+        }
+        .ui-body-a .ui-link {
+            background-image: url(Who is online_Active.png);
+        }
+        a:hover #imgOnline {
+            background-image: url(Who is online_Active.png);
+        }
+        </style>
+        <div data-role="header">
+            <!--                <h1>Main Page</h1>-->
+        </div>
+        <div id="dvContent" data-role="content" class="bg">
+
+            <div class="bg">
+                <div class="dvHeader">
+                    <img src="img/logo.png" class="imgLogo" />
+
+                </div>
+                <div class="dvSect">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a">
+                            <img class="imgSect" src="img/women.png" />
+                        </div>
+                        <div class="ui-block-b">
+                            <img class="imgSect" src="img/men.png" />
+                        </div>
+                        <div class="ui-block-c">
+                            <img class="imgSect" src="img/couple.png" />
+                        </div>
+                    </div>
+                    <!-- /grid-b -->
+                </div>
+                <div class="dvRecent">
+
+
+                </div>
+                <div class="dvLink">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a">
+                            <a href="javascript:void(0);" onclick="GotoLink('');">
+                                <img class="imgLink" id="imgOnline" src="img/Who is online_normal.png" />
+                            </a>
+                        </div>
+                        <div class="ui-block-b">
+                            <a href="javascript:void(0);" onclick="GotoLink('');">
+                                <img class="imgLink" id="imgMember" onclick="GotoLink('');" src="img/Member near you.png" />
+                            </a>
+                        </div>
+                        <div class="ui-block-c">
+                            <a href="javascript:void(0);" onclick="GotoLink('');">
+                                <img class="imgLink" id="imgSearch" onclick="GotoLink('search.html');" src="img/Search Members_Normal.png" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /grid-1 -->
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a">
+                            <a href="javascript:void(0);" onclick="GotoLink('');">
+                                <img class="imgLink" id="imgStory" onclick="GotoLink('');" src="img/Story_Normal.png" />
+                            </a>
+                        </div>
+                        <div class="ui-block-b">
+                            <a href="javascript:void(0);" onclick="GotoLink('');">
+                                <img class="imgLink" id="imgPicture" onclick="GotoLink('AlbumCategory.html');" src="img/Add Picture _ Video.png" />
+                            </a>
+                        </div>
+                        <div class="ui-block-c">
+                            <a href="javascript:void(0);" onclick="GotoLink('');">
+                                <img class="imgLink" id="imgVIP" onclick="GotoLink('');" src="img/Become a VIP_Normal.png" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /grid-2 -->
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a">
+                            <a href="javascript:void(0);" onclick="GotoLink('');">
+                                <img class="imgLink" id="imgprofile" onclick="GotoLink('mailbox.html');" src="img/My profile_Normal.png" />
+                            </a>
+                        </div>
+                        <div class="ui-block-b">
+                            <a href="javascript:void(0);" onclick="GotoLink('');">
+                                <img class="imgLink" id="imgSettings" onclick="GotoLink('');" src="img/Settings_Normal.png" />
+                            </a>
+                        </div>
+                        <div class="ui-block-c">
+                            <a href="javascript:void(0);" class="btnlogout">
+                                <img class="imgLink" id="imgLogout" src="img/Logout_normal.png" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /grid-3 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="css/bartender.css" />
+</body>
+
+</html>
